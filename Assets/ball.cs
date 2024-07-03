@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             SendBallInRandomDirection();
         }
@@ -46,8 +46,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        rigidbody2D.velocity =
-         Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
+        rigidbody2D.velocity = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
         lastVelocity = rigidbody2D.velocity;
         lastVelocity = rigidbody2D.velocity * 1.1f;
         LeftPlayer.speed *= 1.1f;
@@ -71,5 +70,7 @@ public class Ball : MonoBehaviour
             
         }
         SendBallInRandomDirection();
+
+
     }
 }
